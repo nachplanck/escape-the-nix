@@ -1,0 +1,6 @@
+Si estás leyendo esto es porque tú también has llegado al reino de Nix pero, como has podido observar con 'ls', ya no queda nada... Todo iba bien hasta que el temible M$ atacó y el rey Tux se volvió loco. Si estás leyendo esto, intenta conectar con mi usuario, te he dejado información importante para contactar con mi compañero
+
+Me llamo 'richard.stallman'
+Mi contraseña es 'gnu'
+
+Ahora que lo pienso, la solución a todo est

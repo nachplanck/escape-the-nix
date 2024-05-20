@@ -1,0 +1,31 @@
+x-template: &escape_the_nix
+  image: debian_escape_the_nix
+  depends_on:
+    - debian_escape_the_nix
+  restart: unless-stopped
+  deploy:
+    resources:
+      limits:
+        cpus: '0.5'
+        memory: '512M'
+
+services:
+  debian_escape_the_nix:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: debian_escape_the_nix
+    deploy:
+      replicas: 0
+
+  user1:
+    <<: *escape_the_nix
+    container_name: user1
+    ports:
+      - "2221:22"
+    environment:
+      - TZ=Europe/Madrid
+      - USERNAME=user1
+      - PASSWORD=user1
+    #volumes:
+      #- ./Alumnos/user1:/home/user1
