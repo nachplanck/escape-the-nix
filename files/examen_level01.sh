@@ -45,15 +45,18 @@ echo -n "$misterioso> "; escribe_como_humano "$nombre, ya veo... Supongo que te 
 read -p "$nombre> " respuesta
 respuesta=${respuesta,,}
 
-if [ $respuesta = "si" ] || [ $respuesta = "sí" ] || [ $respuesta = "s" ]; then
-    echo -n "$misterioso> "; escribe_como_humano "Está bien, pero Richard no enviaría a cualquiera arriesgándose a que sea un secuaz de M$"
-    echo -n "$misterioso> "; escribe_como_humano "Veamos lo que sabes de Linux"
-else
-    echo -n "$misterioso> "
-    escribe_como_humano "Entonces no se te ha perdido nada aquí. Adiós"
-    sleep 1
-    exit 1
-fi
+case $respuesta in
+    sí|si|s)
+        echo -n "$misterioso> "; escribe_como_humano "Está bien, pero Richard no enviaría a cualquiera arriesgándose a que sea un secuaz de M$"
+        echo -n "$misterioso> "; escribe_como_humano "Veamos lo que sabes de Linux"
+        ;;
+    *)
+        echo -n "$misterioso> "
+        escribe_como_humano "Entonces no se te ha perdido nada aquí. Adiós"
+        sleep 1
+        exit 1
+        ;;
+esac
 
 pregunta "$misterioso" $nombre "¿Qué comando usarías para ver el contenido de un directorio?" "ls"
 pregunta "$misterioso" $nombre "Muy bien. ¿Y qué comando usarías para ver el contenido de un fichero?" "cat"
@@ -67,4 +70,4 @@ echo -n "$misterioso> "; sleep 2; escribe_como_humano "Esto no es un adiós"; sl
 clear
 
 touch ~/.test_passed
-# sed "s/#NOMBRE#/$nombre/g" ~/leeme.txt > ~/leeme.txt
+sed -i "s/#NOMBRE#/$nombre/g" ~/leeme.txt
